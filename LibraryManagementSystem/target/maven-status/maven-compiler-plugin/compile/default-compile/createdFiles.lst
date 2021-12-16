@@ -1,0 +1,7 @@
+com\dao\UserDaoImpl.class
+com\dao\UserDao.class
+com\controller\UserController.class
+com\model\User.class
+com\config\HbWebAppConfig.class
+com\config\HbWebAppInitializer.class
+com\config\HbRootWebAppConfig.class
