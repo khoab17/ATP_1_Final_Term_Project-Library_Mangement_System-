@@ -33,13 +33,6 @@ public class UserDaoImpl implements UserDao {
         return users == null ? new ArrayList<User>() : users;
     }
 
-    @Override
-    @Transactional
-    public  void save(User user)
-    {
-        Session session=sessionFactory.getCurrentSession();
-        session.saveOrUpdate(user);
-    }
 
     @Override
     @Transactional
