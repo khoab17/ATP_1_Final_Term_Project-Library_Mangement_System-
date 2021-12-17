@@ -3,13 +3,13 @@ package com.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer userId;
 
     @Column(name = "fname")
     private String firstName;
@@ -21,7 +21,7 @@ public class User {
     private String gender;
 
     @Column(name="dateOfBirth")
-    private String DateOfBirth;
+    private String dateOfBirth;
 
     @Column(name="contact")
     private  String contact;
@@ -29,14 +29,20 @@ public class User {
     @Column(name="email")
     private String email;
 
+    @OneToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "cId")
+    private Credential credential;
+
     public User(){}
 
-    public User(Integer id, String firstName, String lastName, String gender, String dateOfBirth, String contact, String email) {
-        this.id = id;
+    public User(Credential credential){this.credential=credential;}
+
+    public User(Integer userId, String firstName, String lastName, String gender, String dateOfBirth, String contact, String email) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        DateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
         this.contact = contact;
         this.email = email;
     }
@@ -45,17 +51,17 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        DateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
         this.contact = contact;
         this.email = email;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -83,11 +89,11 @@ public class User {
     }
 
     public String getDateOfBirth() {
-        return DateOfBirth;
+        return dateOfBirth;
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-        DateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getContact() {
@@ -106,4 +112,11 @@ public class User {
         this.email = email;
     }
 
+    public Credential getCredential() {
+        return credential;
+    }
+
+    public void setCredential(Credential credential) {
+        this.credential = credential;
+    }
 }

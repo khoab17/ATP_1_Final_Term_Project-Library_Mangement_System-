@@ -5,47 +5,59 @@
   Time: 11:47 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
     <title>User List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%@ include file="header.jsp" %>
 </head>
+
+
 <body>
+<br>
+<div class="mainContent">
+    <table class="table table-sm table-striped"style="width:90%;margin-left: 5%;margin-right:5%;">
+        <a  style="margin-left: 5%" class="btn-sm btn-primary" href="create">Create A new User</a>
+        <h2 style="margin-left:5% ">User List:</h2>
+        <thead class="thead-dark" >
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
 
-<div id="wrapper">
-    <div id="header">
-        <br>
-        <h2>User List: <a class="btn btn-sm btn-primary" href="create">Create a new User</a></h2>
-    </div>
-</div>
-
-<div id="container">
-    <div id="content">
-        <table class="table-sm">
+        <c:forEach items="${users}" var="user" >
             <tr>
-                <th>User ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th></th>
+                <td>${user.userId}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
+                <td>${user.gender}</td>
+                <td>${user.dateOfBirth}</td>
+                <td>${user.contact}</td>
+                <td>${user.email}</td>
+                <td><button class="btn btn-primary btn-sm">Edit</button></td>
+
             </tr>
-            <c:forEach var="user" items="${users}">
-                <tr>
-                    <td>${user.id}</td>
-                    <td> ${user.firstName} </td>
-                    <td> ${user.lastName} </td>
-                    <td>
-                    <td><a class="btn-primary btn-sm" href="update?id=${user.id}">Edit</a></td>
-                    <td><a class="btn-danger btn-sm" href="delete?id=${user.id}">Delete</a></td>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+        </c:forEach>
+
+
+
+
+    </table>
 </div>
 
+<br><br><br><br><br><br>
 </body>
 </html>

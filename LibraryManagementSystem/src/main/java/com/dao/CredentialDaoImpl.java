@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public class CredentialDaoImpl implements CredentialDao{
     private SessionFactory sessionFactory;
-    public CredentialDaoImpl(){}
     public CredentialDaoImpl(SessionFactory sessionFactory)
     {
         this.sessionFactory=sessionFactory;

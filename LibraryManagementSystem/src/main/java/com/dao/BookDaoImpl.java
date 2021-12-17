@@ -4,6 +4,7 @@ import com.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ public class BookDaoImpl implements BookDao {
     private SessionFactory sessionFactory;
 
     public BookDaoImpl(){}
+    @Autowired
     public BookDaoImpl(SessionFactory sessionFactory)
     {
         this.sessionFactory=sessionFactory;

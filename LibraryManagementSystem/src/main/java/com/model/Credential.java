@@ -1,5 +1,6 @@
 package com.model;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +19,9 @@ public class Credential {
 
     @Column(name = "role")
     private String role;
+
+    @OneToOne(mappedBy = "credential",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private User user;
 
     public Credential(){}
 
@@ -64,5 +68,13 @@ public class Credential {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

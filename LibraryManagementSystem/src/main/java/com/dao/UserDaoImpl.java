@@ -16,9 +16,6 @@ public class UserDaoImpl implements UserDao {
 
     private SessionFactory sessionFactory;
 
-    public UserDaoImpl() {
-    }
-
     @Autowired
     public UserDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

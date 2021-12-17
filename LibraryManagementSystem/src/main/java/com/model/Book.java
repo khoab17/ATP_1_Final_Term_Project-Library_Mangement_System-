@@ -1,31 +1,44 @@
 package com.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "book")
 public class Book {
     @Id
-    @Column(name="id")
+    @Column(name="bookId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @Column(name="title")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String title;
 
     @Column (name="publisher")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String publisher;
 
     @Column(name="author")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String author;
 
     @Column (name="numberOfCopies")
+    @NotNull(message = "Can not be empty")
+    @Min(value = 1)
     private Integer numberOfCopies;
 
     @Column (name = "numberOfAvailableCopies")
-    private Integer NumberOfAvailableCopies;
+    private Integer numberOfAvailableCopies;
 
     @Column(name="categoryId")
+    @NotNull(message = "Can not be empty")
     private  Integer categoryId;
 
     public Book(){}
@@ -36,7 +49,7 @@ public class Book {
         this.publisher = publisher;
         this.author = author;
         this.numberOfCopies = numberOfCopies;
-        NumberOfAvailableCopies = numberOfAvailableCopies;
+        this.numberOfAvailableCopies = numberOfAvailableCopies;
         this.categoryId = categoryId;
     }
 
@@ -45,7 +58,7 @@ public class Book {
         this.publisher = publisher;
         this.author = author;
         this.numberOfCopies = numberOfCopies;
-        NumberOfAvailableCopies = numberOfAvailableCopies;
+        this.numberOfAvailableCopies = numberOfAvailableCopies;
         this.categoryId = categoryId;
     }
 
@@ -90,11 +103,11 @@ public class Book {
     }
 
     public Integer getNumberOfAvailableCopies() {
-        return NumberOfAvailableCopies;
+        return numberOfAvailableCopies;
     }
 
     public void setNumberOfAvailableCopies(Integer numberOfAvailableCopies) {
-        NumberOfAvailableCopies = numberOfAvailableCopies;
+        this.numberOfAvailableCopies = numberOfAvailableCopies;
     }
 
     public Integer getCategoryId() {
