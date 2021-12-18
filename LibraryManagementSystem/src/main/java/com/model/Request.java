@@ -19,6 +19,9 @@ public class Request {
     @Column(name = "edition")
     private String edition;
 
+    @Column(name="note")
+    private String note;
+
     @Column(name = "status")
     private String status;
 
@@ -27,19 +30,21 @@ public class Request {
 
     public Request(){}
 
-    public Request(Integer id, String title, String author, String edition, String status, Integer studentId) {
-        this.id = id;
+    public Request(String title, String author, String edition, String note, String status, Integer studentId) {
         this.title = title;
         this.author = author;
         this.edition = edition;
+        this.note = note;
         this.status = status;
         this.studentId = studentId;
     }
 
-    public Request(String title, String author, String edition, String status, Integer studentId) {
+    public Request(Integer id, String title, String author, String edition, String note, String status, Integer studentId) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.edition = edition;
+        this.note = note;
         this.status = status;
         this.studentId = studentId;
     }
@@ -90,5 +95,13 @@ public class Request {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

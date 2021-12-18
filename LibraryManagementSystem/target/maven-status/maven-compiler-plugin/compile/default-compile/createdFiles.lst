@@ -18,6 +18,7 @@ com\model\Category.class
 com\dao\CategoryDao.class
 com\model\Credential.class
 com\dao\CredentialDaoImpl.class
+com\controller\RequestController.class
 com\dao\UserDao.class
 com\model\User.class
 com\model\Request.class

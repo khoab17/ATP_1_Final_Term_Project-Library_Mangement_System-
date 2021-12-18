@@ -52,4 +52,15 @@ public class RequestDaoImpl implements RequestDao{
         Request request=session.byId(Request.class).load(id);
         session.delete(request);
     }
+
+    @Override
+    @Transactional
+    public List<Request> getByStatus(String status)
+    {
+        Session session=sessionFactory.getCurrentSession();
+        Query<Request> requestQuery=session.createQuery("from Request where status="+"'"+status+"'" ,Request.class);
+        List<Request> requests=requestQuery.getResultList();
+        return requests==null? new ArrayList<Request>() : requests;
+    }
+
 }
