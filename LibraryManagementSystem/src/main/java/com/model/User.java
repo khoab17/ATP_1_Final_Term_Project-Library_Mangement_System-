@@ -1,6 +1,9 @@
 package com.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -12,21 +15,30 @@ public class User {
     private Integer userId;
 
     @Column(name = "fname")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String firstName;
 
     @Column(name = "lname")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String lastName;
 
     @Column(name="gender")
+    @NotNull(message = "Can not be empty")
     private String gender;
 
     @Column(name="dateOfBirth")
+    @NotNull(message = "Can not be empty")
     private String dateOfBirth;
 
     @Column(name="contact")
+    @NotNull(message = "Can not be empty")
     private  String contact;
 
     @Column(name="email")
+    @NotNull(message = "Can not be empty")
+    @Email(message = "Should be in email format")
     private String email;
 
     @OneToOne(fetch = FetchType.LAZY,optional = false)
@@ -34,8 +46,6 @@ public class User {
     private Credential credential;
 
     public User(){}
-
-    public User(Credential credential){this.credential=credential;}
 
     public User(Integer userId, String firstName, String lastName, String gender, String dateOfBirth, String contact, String email) {
         this.userId = userId;
@@ -55,6 +65,7 @@ public class User {
         this.contact = contact;
         this.email = email;
     }
+
 
     public Integer getUserId() {
         return userId;

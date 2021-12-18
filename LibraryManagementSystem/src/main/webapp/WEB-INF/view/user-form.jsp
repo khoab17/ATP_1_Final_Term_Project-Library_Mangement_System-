@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -15,23 +16,23 @@
     <%@ include file="header.jsp" %>
 </head>
 <body>
-<form action="save" method="post" class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
+<form action="save" method="post"  class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
     <h4>User Registration</h4>
     <hr>
     <label class="mr-2">User Type:</label>
-        <input class=" mr-1" type="radio" name="role" value="Admin" checked><label>Admin</label>
-        <input class="mr-1" type="radio" name="role" value="Student"><label>Student</label><br>
+        <input type="radio"  class=" mr-1"  name="role" value="Admin"><label>Admin</label>
+        <input type="radio" class="mr-1"   name="role" value="Student"><label>Student</label><br>
 
     <label>First Name</label>
     <input class="form-control" type="text"  name="firstName" >
 
     <label>Last Name</label>
-    <input class="form-control" type="text" name="lastName" >
+    <input class="form-control" type="text" name="lastName">
 
     <label class="mr-2 mt-2">Gender:</label>
-        <input class="mr-1" type="radio" name="gender" value="Male"><label>Male</label>
-        <input class="mr-1" type="radio" name="gender" value="Female"><label>Female</label><br>
-
+        <input type="radio" class="mr-1"  name="gender" value="Male" /><label>Male</label>
+        <input type="radio" class="mr-1"  name="gender" value="Female"/><label>Female</label><br>
+        <form:errors path="gender" cssClass="error" />
 
     <label>Date Of Birth</label>
     <input class="form-control" type="date" name="dateOfBirth">
@@ -43,9 +44,9 @@
     <input class="form-control" type="email" name="email">
 
     <label>Password</label>
-    <input class="form-control" type="password" name="password"><br>
+    <input class="form-control" type="password" name="password">
 
-    <input type="submit" class="btn btn-sm btn-primary btn ml-4" value="Save">
+    <input type="submit" class="btn btn-sm btn-primary btn ml-4" value="Save"/>
     <a class="btn btn-sm btn-secondary ml-4" href="list">Back</a>
     <br>
 </form>

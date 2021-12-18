@@ -1,7 +1,8 @@
 package com.model;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "credential")
@@ -12,12 +13,16 @@ public class Credential {
     private Integer id;
 
     @Column(name = "email")
+    @NotNull(message="Can not be null")
+    @Email(message = "Should be in email format")
     private String email;
 
     @Column(name="password")
+    @NotNull(message = "Can not be empty")
     private String password;
 
     @Column(name = "role")
+    @NotNull(message = "Can not be empty")
     private String role;
 
     @OneToOne(mappedBy = "credential",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -25,14 +30,14 @@ public class Credential {
 
     public Credential(){}
 
-    public Credential(Integer id, String email, String password, String role) {
-        this.id = id;
+    public Credential(String email, String password, String role) {
         this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    public Credential(String email, String password, String role) {
+    public Credential(Integer id, String email, String password, String role) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
