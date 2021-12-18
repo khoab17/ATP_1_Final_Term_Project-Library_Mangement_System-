@@ -1,4 +1,5 @@
 com\dao\UserDaoImpl.class
+com\model\CredentialUser.class
 com\dao\BookDaoImpl.class
 com\dao\IssueDaoImpl.class
 com\dao\CategoryImpl.class
@@ -6,10 +7,11 @@ com\dao\RequestDao.class
 com\dao\BookDao.class
 com\model\Book.class
 com\controller\BookController.class
+com\controller\IssueController.class
 com\controller\UserController.class
 com\dao\IssueDao.class
 com\config\HbWebAppInitializer.class
-com\service\UserService.class
+com\service\BookCategoryService.class
 com\dao\RequestDaoImpl.class
 com\config\HbWebAppConfig.class
 com\model\Category.class

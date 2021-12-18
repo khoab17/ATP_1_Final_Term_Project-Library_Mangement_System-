@@ -16,7 +16,6 @@ public class BookDaoImpl implements BookDao {
 
     private SessionFactory sessionFactory;
 
-    public BookDaoImpl(){}
     @Autowired
     public BookDaoImpl(SessionFactory sessionFactory)
     {

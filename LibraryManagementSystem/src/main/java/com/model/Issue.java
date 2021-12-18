@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "issue")
@@ -12,15 +14,21 @@ public class Issue {
     private Integer issueId;
 
     @Column(name = "dateOfIssue")
+    @NotNull(message = "Can not be empty")
     private String dateOfIssue;
 
     @Column(name="dateOfReturn")
+    @NotNull(message = "Can not be empty")
     private String dateOfReturn;
 
     @Column(name = "bookId")
+    @NotNull(message = "Can not be empty")
+    @Min(value = 1)
     private Integer bookId;
 
     @Column (name = "studentId")
+    @NotNull(message = "Can not be empty")
+    @Min(value = 1)
     private Integer studentId;
 
     @Column (name="status")

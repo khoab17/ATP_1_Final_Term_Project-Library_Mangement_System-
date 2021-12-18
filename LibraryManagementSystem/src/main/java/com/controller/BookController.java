@@ -23,17 +23,9 @@ import java.util.List;
 public class BookController {
 
     private BookDao bookDao;
-    private BookCategoryService bookCategoryService;
-
 
     @Autowired
     public BookController(BookDao bookDao){this.bookDao=bookDao;}
-
-    public BookController(BookCategoryService bookCategoryService)
-    {
-        this.bookCategoryService=bookCategoryService;
-    }
-
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder)
