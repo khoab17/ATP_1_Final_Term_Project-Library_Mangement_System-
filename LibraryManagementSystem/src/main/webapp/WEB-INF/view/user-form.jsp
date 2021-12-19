@@ -46,6 +46,8 @@
     <label>Password</label>
     <input class="form-control" type="password" name="password">
 
+    <br>
+
     <input type="submit" class="btn btn-sm btn-primary btn ml-4" value="Save"/>
     <a class="btn btn-sm btn-secondary ml-4" href="list">Back</a>
     <br>

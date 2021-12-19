@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import javax.xml.soap.SOAPPart;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -58,8 +55,8 @@ public class UserController {
         map.put("user",new User());
         map.put("credential",new Credential());*/
         //model.addAttribute("user",new User());
-        model.addAttribute("credentialUser",new User());
-        return "user-form";
+        model.addAttribute("credentialUser",new CredentialUser());
+        return "user-form-val";
     }
 
     @RequestMapping ("/update")
@@ -68,8 +65,9 @@ public class UserController {
         model.addAttribute("user",user);
         return null;
     }
+
     @RequestMapping ("/save")
-    public String save(@ModelAttribute("user")User user,@ModelAttribute("credential")Credential credential)
+    public String save(@Valid @ModelAttribute("credentialUser") CredentialUser credentialUser,BindingResult bindingResult)
     {
 
             //user.setCredential(credentialUser.getUser());
@@ -80,12 +78,22 @@ public class UserController {
             credential.setUser(user);
             user.setCredential(credential);
             */
-            user.setCredential(credential);
+
+            /*user.setCredential(credential);
             credential.setUser(user);
-            credentialDao.update(credential);
-            return "redirect:/user/list";
+            credentialDao.update(credential);*/
+
+            if(bindingResult.hasErrors())
+            {
+                return "user-form-val";
+            }
+            else
+            {
+                return "redirect:/user/list";
+            }
 
     }
+
 
     @RequestMapping("delete")
     public String delete(int id){

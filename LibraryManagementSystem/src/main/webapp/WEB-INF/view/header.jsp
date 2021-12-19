@@ -72,9 +72,10 @@
     <a href="#default" class="logo">Library MS</a>
     <div class="header-right">
         <a class="" href="">Home</a>
-        <a href="/user/list">Users</a>
-        <a href="/book/list">Books</a>
-        <a href="">Issues</a>
+        <a href="${pageContext.request.contextPath}/user/list">Users</a>
+        <a href="${pageContext.request.contextPath}/book/list">Books</a>
+        <a href="${pageContext.request.contextPath}/issue/list">Issues</a>
+        <a href="${pageContext.request.contextPath}/request/list">Requests</a>
         <a href="">Log out</a>
     </div>
 </div>

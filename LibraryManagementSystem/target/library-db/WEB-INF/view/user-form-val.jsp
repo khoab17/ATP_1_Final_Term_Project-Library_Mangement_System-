@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-<form:form action="save" method="post" modelAttribute="user"  class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
+<form:form action="save" method="post" modelAttribute="credentialUser"  class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
     <h4>User Registration</h4>
     <hr>
     <label class="mr-2">User Type:</label>
@@ -27,25 +27,25 @@
     <form:radiobutton class="mr-1"   path="credential.role" value="Student"/><label>Student</label><br>
     <form:errors path="credential.role" cssClass="error" />
 
-    <label>First Name</label><form:errors path="firstName" cssClass="error" />
-    <form:input class="form-control" type="text"  path="firstName" />
+    <label>First Name</label><form:errors path="user.firstName" cssClass="error" />
+    <form:input class="form-control" type="text"  path="user.firstName" />
 
-    <label>Last Name</label><form:errors path="lastName" cssClass="error" />
-    <form:input class="form-control" type="text" path="lastName" />
+    <label>Last Name</label><form:errors path="user.lastName" cssClass="error" />
+    <form:input class="form-control" type="text" path="user.lastName" />
 
     <label class="mr-2 mt-2">Gender:</label>
-    <form:radiobutton class="mr-1"  path="gender" value="Male" /><label>Male</label>
-    <form:radiobutton class="mr-1"  path="gender" value="Female"/><label>Female</label><br>
-    <form:errors path="gender" cssClass="error" />
+    <form:radiobutton class="mr-1"  path="user.gender" value="Male" /><label>Male</label>
+    <form:radiobutton class="mr-1"  path="user.gender" value="Female"/><label>Female</label><br>
+    <form:errors path="user.gender" cssClass="error" />
 
-    <label>Date Of Birth</label><form:errors path="dateOfBirth" cssClass="error" />
-    <form:input class="form-control" type="date" path="dateOfBirth"/>
+    <label>Date Of Birth</label><form:errors path="user.dateOfBirth" cssClass="error" />
+    <form:input class="form-control" type="date" path="user.dateOfBirth"/>
 
-    <label>Contact</label><form:errors path="contact" cssClass="error" />
-    <form:input class="form-control" type="text" path="contact"/>
+    <label>Contact</label><form:errors path="user.contact" cssClass="error" />
+    <form:input class="form-control" type="text" path="user.contact"/>
 
-    <label>Email</label><form:errors path="email" cssClass="error" />
-    <form:input class="form-control" type="email" path="email"/>
+    <label>Email</label><form:errors path="user.email" cssClass="error" />
+    <form:input class="form-control" type="email" path="user.email"/>
 
     <label>Password</label><form:errors path="credential.password" cssClass="error" />
     <form:password class="form-control"  path="credential.password"/><br>
@@ -53,6 +53,7 @@
     <input type="submit" class="btn btn-sm btn-primary btn ml-4" value="Save"/>
     <a class="btn btn-sm btn-secondary ml-4" href="list">Back</a>
     <br>
+
 </form:form>
 
 </body>

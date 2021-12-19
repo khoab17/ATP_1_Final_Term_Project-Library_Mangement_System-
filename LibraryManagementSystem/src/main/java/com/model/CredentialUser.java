@@ -1,7 +1,11 @@
 package com.model;
 
+import javax.validation.Valid;
+
 public class CredentialUser {
+    @Valid
     private Credential credential;
+    @Valid
     private User user;
     public CredentialUser(){}
 
