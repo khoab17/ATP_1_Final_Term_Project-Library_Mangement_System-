@@ -12,12 +12,14 @@ com\controller\IssueController.class
 com\controller\UserController.class
 com\dao\IssueDao.class
 com\config\HbWebAppInitializer.class
-com\service\BookCategoryService.class
+com\service\UserService.class
 com\dao\RequestDaoImpl.class
 com\model\Login.class
 com\config\HbWebAppConfig.class
+com\service\UserServiceImpl.class
 com\model\Category.class
 com\dao\CategoryDao.class
+com\service\CategoryService.class
 com\model\Credential.class
 com\dao\CredentialDaoImpl.class
 com\controller\RequestController.class
@@ -27,3 +29,4 @@ com\model\Request.class
 com\config\HbRootWebAppConfig.class
 com\dao\CredentialDao.class
 com\model\Issue.class
+com\service\CategoryServiceImpl.class

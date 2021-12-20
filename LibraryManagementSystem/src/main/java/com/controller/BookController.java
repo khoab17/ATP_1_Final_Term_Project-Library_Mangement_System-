@@ -3,6 +3,7 @@ package com.controller;
 
 import com.dao.BookDao;
 import com.model.Book;
+import com.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -22,9 +23,14 @@ import java.util.List;
 public class BookController {
 
     private BookDao bookDao;
+    private CategoryService categoryService;
 
     @Autowired
-    public BookController(BookDao bookDao){this.bookDao=bookDao;}
+    public BookController(BookDao bookDao ,CategoryService categoryService)
+    {
+        this.bookDao=bookDao;
+        this.categoryService=categoryService;
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder)
@@ -45,14 +51,15 @@ public class BookController {
     {
         //model.addAttribute("categories",bookCategoryService.getCategories());
         model.addAttribute("book",new Book());
+        model.addAttribute("categories",categoryService.getAll());
         return "book-create";
     }
 
     @RequestMapping("save")
-    public String save(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult){
+    public String save(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult,Model model){
         if(bindingResult.hasErrors())
         {
-
+            model.addAttribute("categories",categoryService.getAll());
             return "book-create";
         }
         else {
@@ -81,6 +88,7 @@ public class BookController {
     {
         Book book=bookDao.get(id);
         model.addAttribute("book",book);
+        model.addAttribute("categories",categoryService.getAll());
         return "book-update";
     }
 

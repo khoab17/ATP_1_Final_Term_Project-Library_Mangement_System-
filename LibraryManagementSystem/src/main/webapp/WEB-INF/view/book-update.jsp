@@ -22,7 +22,7 @@
 </head>
 <body>
 <form:form action="saveUpdate" method="post"  modelAttribute="book" class="form-control" style="width: 30% ;margin-left:30% ;margin-top: 2%" >
-    <h4 >Add Book</h4>
+    <h4 >Update Book</h4>
     <hr>
     <label>Book Title</label><form:errors path="title" cssClass="error"/>
     <form:input class="form-control" type="text"  path="title" />
@@ -39,11 +39,17 @@
     <label>Number OF Copies</label><form:errors path="numberOfCopies" cssClass="error"/>
     <form:input class="form-control" type="number" path="numberOfCopies"/>
 
-    <label>Number OF Copies</label><form:errors path="numberOfAvailableCopies" cssClass="error"/>
+    <label>Available Copies</label><form:errors path="numberOfAvailableCopies" cssClass="error"/>
     <form:input class="form-control" type="number" path="numberOfAvailableCopies"/>
 
+    <label>Category</label>
+    <form:select path="categoryId" class="form-select form-select-sm form-control" aria-label=".form-select-sm example">
+        <form:options items="${categories}" />
+    </form:select>
+    <br>
 
 
+    <form:hidden path="id" value="${book.id}"></form:hidden>
     <br>
     <input type="submit" class="btn-sm btn-primary btn" value="Save">
     <a class="btn btn-sm btn-secondary" href="list">Back</a>
