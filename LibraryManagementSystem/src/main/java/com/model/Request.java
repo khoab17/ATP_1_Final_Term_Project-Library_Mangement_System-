@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "request")
@@ -11,21 +13,29 @@ public class Request {
     private Integer id;
 
     @Column(name = "title")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String title;
 
     @Column(name = "author")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String author;
 
     @Column(name = "edition")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String edition;
 
     @Column(name="note")
     private String note;
 
     @Column(name = "status")
+    @NotNull(message = "Can not be null")
     private String status;
 
     @Column(name = "studentId")
+    @NotNull(message = "Can not be null")
     private Integer studentId;
 
     public Request(){}

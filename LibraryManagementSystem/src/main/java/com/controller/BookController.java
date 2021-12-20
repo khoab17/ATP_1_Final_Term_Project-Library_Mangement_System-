@@ -70,10 +70,10 @@ public class BookController {
     }
 
     @RequestMapping("saveUpdate")
-    public String saveUpdate(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult){
+    public String saveUpdate(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult,Model model){
         if(bindingResult.hasErrors())
         {
-
+            model.addAttribute("categories",categoryService.getAll());
             return "book-update";
         }
         else {

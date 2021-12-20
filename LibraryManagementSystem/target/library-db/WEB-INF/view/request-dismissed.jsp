@@ -25,9 +25,10 @@
 
     <table style="margin-left: 5%">
         <tr>
-            <th><a   class="btn-primary btn-sm" href="pending">Pending Requests</a></th>
-            <th><a  class="btn-primary btn-sm" href="approved">Approved Requests</a></th>
-            <th><a   class="btn-danger btn-sm" href="dismissed">Dismissed Requests</a></th>
+            <th><a   class="btn-primary btn-sm" href="${pageContext.request.contextPath}/request/list">All Requests</a></th>
+            <th><a   class="btn-primary btn-sm" href="${pageContext.request.contextPath}/request/list/pending">Pending Requests</a></th>
+            <th><a  class="btn-primary btn-sm" href="${pageContext.request.contextPath}/request/list/approved">Approved Requests</a></th>
+            <th><a   class="btn-danger btn-sm" href="${pageContext.request.contextPath}/request/list/dismissed">Dismissed Requests</a></th>
         </tr>
     </table>
 
@@ -56,7 +57,7 @@
                 <td>${request.note}</td>
                 <td>${request.status}</td>
                 <td>${request.studentId}</td>
-                <td><a class="btn-primary btn-sm" href="">Remove</a>
+                <td><a class="btn-primary btn-sm" href="${pageContext.request.contextPath}/request/reconsider?id=${request.id}">Reconsider</a>
                 </td>
             </tr>
         </c:forEach>

@@ -3,7 +3,6 @@ package com.controller;
 import com.dao.IssueDao;
 import com.model.Issue;
 import com.service.IssueService;
-import com.service.IssueServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
