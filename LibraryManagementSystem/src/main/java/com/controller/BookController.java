@@ -3,7 +3,6 @@ package com.controller;
 
 import com.dao.BookDao;
 import com.model.Book;
-import com.service.BookCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;

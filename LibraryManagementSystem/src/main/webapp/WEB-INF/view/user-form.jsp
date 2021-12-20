@@ -14,44 +14,48 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Update</title>
     <%@ include file="header.jsp" %>
+    <style>
+        .error{color: red;}
+    </style>
 </head>
 <body>
-<form action="save" method="post"  class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
+<form:form action="save" method="post" modelAttribute="credentialUser"  class="form-control" style="width: 40% ;margin-left:30% ;margin-top: 2%">
     <h4>User Registration</h4>
     <hr>
-    <label class="mr-2">User Type:</label>
-        <input type="radio"  class=" mr-1"  name="role" value="Admin"><label>Admin</label>
-        <input type="radio" class="mr-1"   name="role" value="Student"><label>Student</label><br>
+    <label class="mr-2">User Type:
+    <form:radiobutton class=" mr-1"  path="credential.role" value="Admin"/><label>Admin</label>
+    <form:radiobutton class="mr-1"   path="credential.role" value="Student"/><label>Student</label><br>
+    </label><form:errors path="credential.role" cssClass="error" /><br>
 
-    <label>First Name</label>
-    <input class="form-control" type="text"  name="firstName" >
+    <label>First Name</label><form:errors path="user.firstName" cssClass="error" />
+    <form:input class="form-control" type="text"  path="user.firstName" />
 
-    <label>Last Name</label>
-    <input class="form-control" type="text" name="lastName">
+    <label>Last Name</label><form:errors path="user.lastName" cssClass="error" />
+    <form:input class="form-control" type="text" path="user.lastName" />
 
     <label class="mr-2 mt-2">Gender:</label>
-        <input type="radio" class="mr-1"  name="gender" value="Male" /><label>Male</label>
-        <input type="radio" class="mr-1"  name="gender" value="Female"/><label>Female</label><br>
-        <form:errors path="gender" cssClass="error" />
+    <form:radiobutton class="mr-1"  path="user.gender" value="Male" /><label>Male</label>
+    <form:radiobutton class="mr-1"  path="user.gender" value="Female"/><label>Female</label>
+    <form:errors path="user.gender" cssClass="error" /><br>
 
-    <label>Date Of Birth</label>
-    <input class="form-control" type="date" name="dateOfBirth">
 
-    <label>Contact</label>
-    <input class="form-control" type="text" name="contact">
+    <label>Date Of Birth</label><form:errors path="user.dateOfBirth" cssClass="error" />
+    <form:input class="form-control" type="date" path="user.dateOfBirth"/>
 
-    <label>Email</label>
-    <input class="form-control" type="email" name="email">
+    <label>Contact</label><form:errors path="user.contact" cssClass="error" />
+    <form:input class="form-control" type="text" path="user.contact"/>
 
-    <label>Password</label>
-    <input class="form-control" type="password" name="password">
+    <label>Email</label><form:errors path="credential.email" cssClass="error" />
+    <form:input class="form-control" type="email" path="credential.email"/>
 
-    <br>
+    <label>Password</label><form:errors path="credential.password" cssClass="error" />
+    <form:password class="form-control"  path="credential.password"/><br>
 
     <input type="submit" class="btn btn-sm btn-primary btn ml-4" value="Save"/>
     <a class="btn btn-sm btn-secondary ml-4" href="list">Back</a>
     <br>
-</form>
+
+</form:form>
 
 </body>
 </html>

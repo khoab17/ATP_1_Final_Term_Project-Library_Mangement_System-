@@ -6,11 +6,11 @@ import javax.validation.constraints.NotNull;
 
 public class Login {
 
-    @NotNull(message="Can not be null")
+    @NotNull(message="Provide your email")
     @Email(message = "Should be in email format")
     private String email;
 
-    @NotNull(message = "Can not be empty")
+    @NotNull(message = "Provide your password")
     private String password;
 
     public Login() {

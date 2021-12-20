@@ -47,8 +47,7 @@
                 <td>${user.dateOfBirth}</td>
                 <td>${user.contact}</td>
                 <td>${user.email}</td>
-                <td><button class="btn btn-primary btn-sm">Edit</button></td>
-
+                <td><a class="btn btn-primary btn-sm" href="${pageContext.request.contextPath}/user/update?id=${user.userId}">Edit</a></td>
             </tr>
         </c:forEach>
 

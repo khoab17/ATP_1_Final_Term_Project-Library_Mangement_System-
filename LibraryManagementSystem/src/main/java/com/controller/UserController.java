@@ -5,6 +5,7 @@ import com.dao.UserDao;
 import com.model.Credential;
 import com.model.CredentialUser;
 import com.model.User;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -25,14 +26,16 @@ public class UserController {
 
     private UserDao userDao;
     private CredentialDao credentialDao;
+    private UserService userService;
 
     public UserController() {
     }
 
     @Autowired
-    public UserController(UserDao userDao,CredentialDao credentialDao) {
+    public UserController(UserDao userDao,CredentialDao credentialDao,UserService userService) {
         this.userDao = userDao;
         this.credentialDao=credentialDao;
+        this.userService=userService;
     }
 
     @InitBinder
@@ -51,46 +54,54 @@ public class UserController {
     @RequestMapping("/create")
     public String create(Model model)
     {
-        /*Map<String,Object> map=new LinkedHashMap<>();
-        map.put("user",new User());
-        map.put("credential",new Credential());*/
-        //model.addAttribute("user",new User());
         model.addAttribute("credentialUser",new CredentialUser());
-        return "user-form-val";
+        return "user-form";
     }
 
     @RequestMapping ("/update")
     public String update(@RequestParam("id") int id,Model model){
-        User user=userDao.get(id);
-        model.addAttribute("user",user);
-        return null;
+        CredentialUser credentialUser=userService.getById(id);
+        model.addAttribute("credentialUser",credentialUser);
+        return "user-update";
     }
 
     @RequestMapping ("/save")
     public String save(@Valid @ModelAttribute("credentialUser") CredentialUser credentialUser,BindingResult bindingResult)
     {
-
-            //user.setCredential(credentialUser.getUser());
-            //user=credentialUser.getUser();
-            //credential=credentialUser.getCredential();
-            /*
-            Credential credential=user.getCredential();
-            credential.setUser(user);
+        if(bindingResult.hasErrors())
+        {
+            return "user-form";
+        }
+        else
+        {
+            User user=credentialUser.getUser();
+            Credential credential=credentialUser.getCredential();
+            user.setEmail(credential.getEmail());
             user.setCredential(credential);
-            */
-
-            /*user.setCredential(credential);
             credential.setUser(user);
-            credentialDao.update(credential);*/
+            credentialDao.update(credential);
+            return "redirect:/user/list";
+        }
 
-            if(bindingResult.hasErrors())
-            {
-                return "user-form-val";
-            }
-            else
-            {
-                return "redirect:/user/list";
-            }
+    }
+
+    @RequestMapping ("/saveUpdate")
+    public String saveUpdate(@Valid @ModelAttribute("credentialUser") CredentialUser credentialUser,BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors())
+        {
+            return "user-update";
+        }
+        else
+        {
+            User user=credentialUser.getUser();
+            Credential credential=credentialUser.getCredential();
+            user.setEmail(credential.getEmail());
+            user.setCredential(credential);
+            credential.setUser(user);
+            credentialDao.update(credential);
+            return "redirect:/user/list";
+        }
 
     }
 

@@ -7,12 +7,14 @@ com\dao\RequestDao.class
 com\dao\BookDao.class
 com\model\Book.class
 com\controller\BookController.class
+com\controller\LoginController.class
 com\controller\IssueController.class
 com\controller\UserController.class
 com\dao\IssueDao.class
 com\config\HbWebAppInitializer.class
 com\service\BookCategoryService.class
 com\dao\RequestDaoImpl.class
+com\model\Login.class
 com\config\HbWebAppConfig.class
 com\model\Category.class
 com\dao\CategoryDao.class

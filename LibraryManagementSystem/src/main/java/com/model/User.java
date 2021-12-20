@@ -37,8 +37,6 @@ public class User {
     private  String contact;
 
     @Column(name="email")
-    @NotNull(message = "Can not be empty")
-    @Email(message = "Should be in email format")
     private String email;
 
     @OneToOne(fetch = FetchType.LAZY,optional = false)
