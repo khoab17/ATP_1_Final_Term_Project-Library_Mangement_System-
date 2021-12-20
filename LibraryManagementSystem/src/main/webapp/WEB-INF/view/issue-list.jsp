@@ -22,8 +22,22 @@
 <body>
 <br>
 <div class="mainContent">
+
+    <table style="margin-left: 5%" >
+        <tr>
+            <td>
+                <a  class="btn-sm btn-primary" href="${pageContext.request.contextPath}/issue/list">All issues</a>
+            </td>
+            <td>
+                <a  class="btn-sm btn-primary" href="${pageContext.request.contextPath}/issue/return">Return Request</a>
+            </td>
+            <td>
+                <a  class="btn-sm btn-primary" href="${pageContext.request.contextPath}/issue/create">Create an Issue</a>
+            </td>
+        </tr>
+    </table>
+
     <table class="table table-sm table-striped"style="width:90%;margin-left: 5%;margin-right:5%;">
-        <a  style="margin-left: 5%" class="btn-sm btn-primary" href="create">Create an Issue</a>
         <h2 style="margin-left:5% ">Issue List</h2>
         <thead class="thead-dark" >
         <tr>
@@ -53,10 +67,6 @@
 
             </tr>
         </c:forEach>
-
-
-
-
     </table>
 </div>
 

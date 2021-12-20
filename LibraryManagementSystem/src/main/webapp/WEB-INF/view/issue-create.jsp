@@ -39,6 +39,8 @@
     <label>Date of Return</label><form:errors path="dateOfReturn" cssClass="error"/>
     <form:input class="form-control" type="date" path="dateOfReturn"/>
 
+    <form:hidden path="status" value="borrowed"></form:hidden>
+
     <br>
     <input type="submit" class="btn-sm btn-primary btn" value="Save">
     <a class="btn btn-sm btn-secondary" href="list">Back</a>

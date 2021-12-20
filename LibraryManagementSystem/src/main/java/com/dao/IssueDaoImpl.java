@@ -32,6 +32,15 @@ public class IssueDaoImpl implements IssueDao{
 
     @Override
     @Transactional
+    public List<Issue> getAll(String status) {
+        Session session=sessionFactory.getCurrentSession();
+        Query<Issue> issueQuery=session.createQuery("from Issue where status="+"'"+status+"'",Issue.class);
+        List<Issue> issues=issueQuery.getResultList();
+        return issues == null ? new ArrayList<Issue>():issues;
+    }
+
+    @Override
+    @Transactional
     public Issue get(int id) {
         Session session=sessionFactory.getCurrentSession();
         Issue issue=session.get(Issue.class,id);

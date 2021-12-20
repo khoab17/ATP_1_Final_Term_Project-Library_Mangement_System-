@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: syed_
-  Date: 12/18/2021
-  Time: 8:00 PM
+  Date: 12/20/2021
+  Time: 4:21 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page isELIgnored="false" %>
@@ -49,7 +49,7 @@
             <th>Status</th>
             <th>Fine</th>
             <th>Comment</th>
-            <th></th>
+            <th>Action</th>
         </tr>
         </thead>
 
@@ -63,7 +63,10 @@
                 <td>${issue.status}</td>
                 <td>${issue.fine}</td>
                 <td>${issue.comment}</td>
-                <td><a class="btn-primary btn-sm" href="update?id=${issue.issueId}">Edit</a></td>
+                <td>
+                    <a class="btn-primary btn-sm" href="${pageContext.request.contextPath}/issue/approve?id=${issue.issueId}">Approve</a>
+                    <a class="btn-danger btn-sm" href="${pageContext.request.contextPath}/issue/fine?id=${issue.issueId}">Make a Fine</a>
+                </td>
 
             </tr>
         </c:forEach>
