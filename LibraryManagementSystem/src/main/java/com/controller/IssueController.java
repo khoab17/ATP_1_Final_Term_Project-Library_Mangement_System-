@@ -74,7 +74,7 @@ public class IssueController {
         issueService.changeStatus(issue.getIssueId(),"approved");
         issue.setStatus("approved");
         issueDao.update(issue);
-        return "issue-fine";
+        return "redirect:/issue/return";
     }
 
     @RequestMapping("create")

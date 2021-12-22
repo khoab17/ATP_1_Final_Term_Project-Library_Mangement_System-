@@ -2,7 +2,9 @@ package com.controller;
 
 
 import com.dao.BookDao;
+import com.dao.CategoryDao;
 import com.model.Book;
+import com.model.Category;
 import com.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -24,12 +26,14 @@ public class BookController {
 
     private BookDao bookDao;
     private CategoryService categoryService;
+    private CategoryDao categoryDao;
 
     @Autowired
-    public BookController(BookDao bookDao ,CategoryService categoryService)
+    public BookController(BookDao bookDao ,CategoryService categoryService,CategoryDao categoryDao)
     {
         this.bookDao=bookDao;
         this.categoryService=categoryService;
+        this.categoryDao=categoryDao;
     }
 
     @InitBinder
@@ -65,6 +69,27 @@ public class BookController {
         else {
             book.setNumberOfAvailableCopies(book.getNumberOfCopies());
             bookDao.update(book);
+            return "redirect:/book/list";
+        }
+    }
+
+    @RequestMapping("create/category")
+    public String createCategory(Model model)
+    {
+        model.addAttribute("category",new Category());
+        return "category-create";
+    }
+
+    @RequestMapping("create/category/save")
+    public String createCategorySave(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors())
+        {
+            return "category-create";
+        }
+        else
+        {
+            categoryDao.update(category);
             return "redirect:/book/list";
         }
     }

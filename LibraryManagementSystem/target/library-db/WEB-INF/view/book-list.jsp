@@ -12,6 +12,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <c:set var = "role" scope = "session" value = "${userRole}"/>
+    <c:if test="${role==null}">
+        <%  session.setAttribute("loginFirst","You Need to login First");  %>
+        <c:redirect url="/login"></c:redirect>
+    </c:if>
     <meta charset="ISO-8859-1">
     <title>Books</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,8 +27,15 @@
 <body>
 <br>
 <div class="mainContent">
+
+    <table style="margin-left: 5%">
+        <tr>
+            <td><a  class="btn-sm btn-primary" href="${pageContext.request.contextPath}/book/create">Add a Book</a></td>
+            <td><a  class="btn-sm btn-primary" href="${pageContext.request.contextPath}/book/create/category">Create a new Category</a></td>
+        </tr>
+    </table>
+
     <table class="table table-sm table-striped"style="width:90%;margin-left: 5%;margin-right:5%;">
-        <a  style="margin-left: 5%" class="btn-sm btn-primary" href="create">Add a Book</a>
         <h2 style="margin-left:5% ">Book List</h2>
         <thead class="thead-dark" >
         <tr>

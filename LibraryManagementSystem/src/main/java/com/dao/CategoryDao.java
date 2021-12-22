@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.model.Category;
+import com.model.Credential;
 
 import java.util.List;
 

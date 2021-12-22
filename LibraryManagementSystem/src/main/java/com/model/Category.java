@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "category")
@@ -12,6 +14,8 @@ public class Category {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull(message = "Can not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only alphabets allowed")
     private String name;
 
     public Category(){}

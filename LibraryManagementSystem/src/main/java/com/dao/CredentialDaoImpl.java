@@ -37,6 +37,19 @@ public class CredentialDaoImpl implements CredentialDao{
 
     @Override
     @Transactional
+    public Credential authenticate(String email, String password) {
+        Session session=sessionFactory.getCurrentSession();
+        Credential credential=null;
+        Query<Credential> credentialQuery=session.createQuery("from Credential where email="+"'"+email+"'"+"and password="+"'"+password+"'",Credential.class);
+        try {
+             credential = credentialQuery.getSingleResult();
+        }
+        catch (Exception e){}
+        return credential==null?null:credential;
+    }
+
+    @Override
+    @Transactional
     public void update(Credential credential) {
         Session session=sessionFactory.getCurrentSession();
         session.saveOrUpdate(credential);

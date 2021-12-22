@@ -76,7 +76,7 @@
         <a href="${pageContext.request.contextPath}/book/list">Books</a>
         <a href="${pageContext.request.contextPath}/issue/list">Issues</a>
         <a href="${pageContext.request.contextPath}/request/list">Requests</a>
-        <a href="">Log out</a>
+        <a href="${pageContext.request.contextPath}/logout">Log out</a>
     </div>
 </div>
 

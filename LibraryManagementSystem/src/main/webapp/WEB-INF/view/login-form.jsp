@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -22,10 +23,16 @@
     <title>login</title>
 </head>
 <body>
+${userRole}${userEmail}
 
-<form:form action="${pageContext.request.contextPath}/login/authenticate" modelAttribute="login" style="width: 26% ;margin-left:37% ;margin-top: 2% " >
+<form:form action="${pageContext.request.contextPath}/authenticate" modelAttribute="login" style="width: 26% ;margin-left:37% ;margin-top: 2% " >
+
     <h3 style="color: deepskyblue">Log in</h3>
     <hr>
+
+    <p style="align-content: center;color: red">${errormessage}</p>
+    <p style="align-content: center;color: red">${loginFirst}</p>
+
     <label>Email</label> <form:errors path="email" cssClass="error"></form:errors>
     <form:input class="form-control" type="text" path="email"></form:input>
 
